@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Nodemcu } from 'src/app/model/nodemcu';
 import { Operation } from 'src/app/model/operation/operation';
-import { OperationService } from 'src/app/service/operation.service';
-import { WebsocketService } from 'src/app/service/websocket.service';
+import { OperationService } from 'src/app/service/inversorl1/operation.service';
+import { WebsocketService } from 'src/app/service/inversorl1/websocket.service';
 
 @Component({
   selector: 'app-analise',

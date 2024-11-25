@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { VideoShort } from 'src/app/module/relatorio/video';
-import { RelatorioService } from 'src/app/service/relatorio.service';
+import { RelatorioInversor1Service } from 'src/app/service/inversor1/relatorio.service';
 
 @Component({
   selector: 'app-video-relatorio',
@@ -11,7 +11,7 @@ import { RelatorioService } from 'src/app/service/relatorio.service';
 })
 export class VideoRelatorioComponent implements OnInit{
 
-  constructor(private relatorioService:RelatorioService){}
+  constructor(private relatorioService: RelatorioInversor1Service){}
 
   displayedColumns: string[] = ['op', 'data', 'horario'];
   dataSource: any;
@@ -47,5 +47,5 @@ export class VideoRelatorioComponent implements OnInit{
       this.dataSource = new MatTableDataSource(data);
     })
   }
-  
+
 }

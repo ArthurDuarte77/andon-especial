@@ -5,8 +5,8 @@ import { Nodemcu } from 'src/app/module/nodemcu';
 import { Realizado } from 'src/app/module/realizado';
 import { RealizadoGeral } from 'src/app/module/realizadoGeral';
 import { ResultadoGeral } from 'src/app/module/resultadoGeral';
-import { MainService } from 'src/app/service/main.service';
-import { NodemcuService } from 'src/app/service/nodemcu.service';
+import { NodemcuAmplificador1Service } from 'src/app/service/amplificador/nodemcu.service';
+import { MainInversor1Service } from 'src/app/service/inversor1/main.service';
 
 
 interface AnalysisResult {
@@ -26,7 +26,7 @@ interface AnalysisResult {
 
 export class ControleGeralComponent implements OnInit {
 
-  constructor(private nodemcuService: NodemcuService, private mainService: MainService) { }
+  constructor(private nodemcuService: NodemcuAmplificador1Service, private mainService: MainInversor1Service) { }
 
 
   public MyChartRealizado: any;

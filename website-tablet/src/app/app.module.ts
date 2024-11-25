@@ -20,6 +20,12 @@ import { DialogAvisoComponent } from './shared/dialog-aviso/dialog-aviso.compone
 import { AnaliseComponent } from './pages/analise/analise.component';
 import { DialogNameComponent } from './shared/dialog-name/dialog-name.component';
 import {MatInputModule} from '@angular/material/input';
+import { Inversorl1Component } from './pages/inversorl1/inversorl1.component';
+import { Inversorl2Component } from './pages/inversorl2/inversorl2.component';
+import { AmplificadorComponent } from './pages/amplificador/amplificador.component';
+import { ControleComponent } from './pages/controle/controle.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +36,10 @@ import {MatInputModule} from '@angular/material/input';
     DialogAvisoComponent,
     AnaliseComponent,
     DialogNameComponent,
+    Inversorl1Component,
+    Inversorl2Component,
+    AmplificadorComponent,
+    ControleComponent,
 
   ],
 
@@ -48,7 +58,8 @@ import {MatInputModule} from '@angular/material/input';
     MatRadioModule,
     FormsModule,
     MatChipsModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

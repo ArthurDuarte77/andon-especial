@@ -9,10 +9,8 @@ import { Geral } from 'src/app/module/relatorio/geral';
 import { GeralNodemcu } from 'src/app/module/relatorio/nodemcu';
 import { GeralRealizadoHoraria } from 'src/app/module/relatorio/realizadoHoraria';
 import { GeralRealizadoHorariaTablet } from 'src/app/module/relatorio/realizadoHorariaTablet';
-import { ResultadoGeral } from 'src/app/module/resultadoGeral';
-import { MainService } from 'src/app/service/main.service';
-import { NodemcuService } from 'src/app/service/nodemcu.service';
-import { RelatorioService } from 'src/app/service/relatorio.service';
+import { ResultadoGeral } from 'src/app/module/resultadoGeral';import { RelatorioInversor1Service } from 'src/app/service/inversor1/relatorio.service';
+;
 
 
 interface dataNodemcu {
@@ -76,7 +74,7 @@ interface MediaTC {
 })
 export class RelatorioHistoricoComponent implements OnInit {
 
-  constructor(private relatorioService: RelatorioService) { }
+  constructor(private relatorioService: RelatorioInversor1Service) { }
 
 
   readonly range = new FormGroup({

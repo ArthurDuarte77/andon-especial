@@ -12,14 +12,14 @@ import { Realizado } from 'src/app/module/realizado';
 import { RealizadoGeral } from 'src/app/module/realizadoGeral';
 import { RealizadoHoraria } from 'src/app/module/realizadoHoraria';
 import { ResultadoGeral } from 'src/app/module/resultadoGeral';
-import { MainService } from 'src/app/service/main.service';
-import { ModeloService } from 'src/app/service/modelo.service';
-import { NodemcuService } from 'src/app/service/nodemcu.service';
-import { RelatorioService } from 'src/app/service/relatorio.service';
 import { DialogAddComponent } from 'src/app/shared/dialog-add/dialog-add.component';
 import { MatDatepicker } from '@angular/material/datepicker';
 import * as moment from 'moment';
 import { Reproducao } from 'src/app/module/relatorio/reproducao';
+import { NodemcuInversor1Service } from 'src/app/service/inversor1/nodemcu.service';
+import { MainInversor1Service } from 'src/app/service/inversor1/main.service';
+import { ModeloInversor1Service } from 'src/app/service/inversor1/modelo.service';
+import { RelatorioInversor1Service } from 'src/app/service/inversor1/relatorio.service';
 
 
 
@@ -52,7 +52,7 @@ export class ConfiguracaoComponent implements OnInit {
 
   dialog = inject(MatDialog);
 
-  constructor(private cdr: ChangeDetectorRef, private nodemcuService: NodemcuService, private mainService: MainService, private modeloService: ModeloService, private _snackBar: MatSnackBar, private relatorioService: RelatorioService) { }
+  constructor(private cdr: ChangeDetectorRef, private nodemcuService: NodemcuInversor1Service, private mainService: MainInversor1Service, private modeloService: ModeloInversor1Service, private _snackBar: MatSnackBar, private relatorioService: RelatorioInversor1Service) { }
 
   nodemcu: Nodemcu[] = []
   filteredData: Nodemcu[] = []
@@ -226,7 +226,7 @@ export class ConfiguracaoComponent implements OnInit {
           }
         }
       });
-      setTimeout(() => {      
+      setTimeout(() => {
         this.dataSourceProgramacao.forEach(item => {
           if(item.id == 0){
             var body: ResultadoGeral = {

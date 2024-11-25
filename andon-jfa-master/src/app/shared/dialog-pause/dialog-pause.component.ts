@@ -35,7 +35,7 @@ export class DialogPauseComponent implements OnInit, OnDestroy {
     // } else {
     //   // Caso não seja hora do café nem do almoço, fechar imediatamente
     //   this.dialogRef.close();
-    //   return; 
+    //   return;
     // }
 
     // // Iniciar o timer apenas se não houver uma assinatura ativa

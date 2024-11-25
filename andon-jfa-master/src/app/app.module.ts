@@ -19,7 +19,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
-import { PausaComponent } from './pages/pausa/pausa.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DialogPauseComponent } from './shared/dialog-pause/dialog-pause.component';
 import { DialogControleRealizadoComponent } from './shared/dialog-controle-realizado/dialog-controle-realizado.component';
@@ -38,13 +37,17 @@ import {MatChipsModule} from '@angular/material/chips';
 import { RelatorioHistoricoComponent } from './pages/relatorio-historico/relatorio-historico.component';
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { VideoRelatorioComponent } from './pages/video-relatorio/video-relatorio.component';
+import { Inversor1Component } from './pages/inversor1/inversor1.component';
+import { AmplificadorComponent } from './pages/amplificador/amplificador.component';
+import { ControleComponent } from './pages/controle/controle.component';
+import { Inversor2Component } from './pages/inversor2/inversor2.component';
+import { Amplificador2Component } from './pages/amplificador2/amplificador2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogMetaComponent,
     HomeComponent,
-    PausaComponent,
     DialogPauseComponent,
     DialogControleRealizadoComponent,
     ControleGeralComponent,
@@ -52,7 +55,12 @@ import { VideoRelatorioComponent } from './pages/video-relatorio/video-relatorio
     ConfiguracaoComponent,
     DialogAddComponent,
     RelatorioHistoricoComponent,
-    VideoRelatorioComponent
+    VideoRelatorioComponent,
+    Inversor1Component,
+    AmplificadorComponent,
+    ControleComponent,
+    Inversor2Component,
+    Amplificador2Component
   ],
   imports: [
     MatTooltipModule,

@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { GoogleApiService } from 'src/app/service/google-api.service';
-import { OperationService } from 'src/app/service/operation.service';
+import { OperationService } from 'src/app/service/inversorl1/operation.service';
 
 @Component({
   selector: 'app-dialog-help',
@@ -20,7 +19,6 @@ export class DialogHelpComponent implements OnInit {
     public dialogRef: MatDialogRef<string>,
     @Inject(MAT_DIALOG_DATA) public data: any[],
     private sanitizer: DomSanitizer, private operationService: OperationService,
-    private googleApiService: GoogleApiService
   ) { }
 
 
@@ -29,15 +27,15 @@ export class DialogHelpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let i = 0; i < this.data.length; i++) {
-      const match = this.data[i].match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|y\/)([^"&?\/\s]{11})/);
+    // for (let i = 0; i < this.data.length; i++) {
+    //   const match = this.data[i].match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|y\/)([^"&?\/\s]{11})/);
 
-      this.googleApiService.getTitle(match[1]).subscribe(res => {
-        console.log(res)
-        this.title[i] = res.items[0].snippet.title
-      })
-      this.data[i] = this.sanitizer.bypassSecurityTrustResourceUrl(this.data[i])
-    }
+    //   this.googleApiService.getTitle(match[1]).subscribe(res => {
+    //     console.log(res)
+    //     this.title[i] = res.items[0].snippet.title
+    //   })
+    //   this.data[i] = this.sanitizer.bypassSecurityTrustResourceUrl(this.data[i])
+    // }
   }
 
 }

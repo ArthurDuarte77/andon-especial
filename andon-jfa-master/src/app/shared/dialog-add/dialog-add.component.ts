@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogAddComponent implements OnInit{
 
   data = inject(MAT_DIALOG_DATA);
-  
+
   constructor() {
   }
 
@@ -22,12 +22,12 @@ export class DialogAddComponent implements OnInit{
 
   initializeFormData(): void {
     this.data.columns.forEach((column: any) => {
-      this.formData[column] = '0'; 
+      this.formData[column] = '0';
     });
 
   }
 
 
 
-  
+
 }
