@@ -111,7 +111,7 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.websocketService.enviarMensagem(this.operation.name, 'verde');
+      this.websocketService.changeColor(this.operation.name, 'verde');
     }, 5000);
     // Adiciona listeners para os eventos de online e offline
     // if (localStorage.getItem('name')) {
@@ -322,7 +322,7 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
               this.openSnackBar('Erro no Service', 'Ok');
             }
           );
-          this.websocketService.enviarMensagem(this.operation.name, 'verde');
+          this.websocketService.changeColor(this.operation.name, 'verde');
         } else {
           this.onPausa = false;
           clearInterval(this.intervalo);
@@ -478,7 +478,7 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
       ) {
         if (this.tempoOcioso > this.limitedTimeOcioso) {
           if (!this.vermelhoStateCalled) {
-            this.websocketService.enviarMensagem(
+            this.websocketService.changeColor(
               this.operation.name,
               'vermelho'
             );
@@ -597,13 +597,13 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
       if (this.contador > 9999) {
         this.stopTimer(state);
       } else if (this.contador == this.lmitedTime) {
-        this.websocketService.enviarMensagem(this.operation.name, 'vermelho');
+        this.websocketService.changeColor(this.operation.name, 'vermelho');
         this.vermelhoStateCalled = false;
       } else if (this.contador == this.lmitedTime * 2) {
-        this.websocketService.enviarMensagem(this.operation.name, 'vermelho');
+        this.websocketService.changeColor(this.operation.name, 'vermelho');
         this.vermelhoStateCalled = true;
       } else if (this.contador == 1) {
-        this.websocketService.enviarMensagem(this.operation.name, 'verde');
+        this.websocketService.changeColor(this.operation.name, 'verde');
       }
     }, 1000);
   }
@@ -825,7 +825,7 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
         }
       );
     } else {
-      this.websocketService.enviarMensagem(this.operation.name, 'verde');
+      this.websocketService.changeColor(this.operation.name, 'verde');
     }
   }
 

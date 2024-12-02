@@ -36,9 +36,9 @@ export class AnaliseComponent implements OnInit, OnDestroy{
   changeAnalise(item: Operation){
     this.service.changeAnalise(item.name, !item.analise)
     if(!item.analise){
-      this.websocketService.enviarMensagem(item.name, 'azul');
+      this.websocketService.changeColor(item.name, 'azul');
     }else{
-      this.websocketService.enviarMensagem(item.name, 'verde');
+      this.websocketService.changeColor(item.name, 'verde');
     }
   }
 
