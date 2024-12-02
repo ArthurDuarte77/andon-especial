@@ -43,13 +43,13 @@
     <div class="div2 simple-div">
       <h1>OP</h1>
       <div>
-        <span>{{op}}</span>
+        <span>{{ op }}</span>
       </div>
     </div>
     <div class="div3 simple-div">
       <h1>DATA</h1>
       <div>
-        <span>{{ dataAtual | date : "dd/MM/YY" }}</span>
+        <span>{{ dataAtual | date : "dd/MM" }}</span>
       </div>
     </div>
     <div class="div4 simple-div">
@@ -73,22 +73,22 @@
       </div>
     </div>
     <div class="div7 complicated-div">
-      <h1>STATUS DA PRODUÇÃO GERAL</h1>
+      <h1>STATUS PRODUÇÃO</h1>
       <div>
         <div>
-          <span>PLANEJADO</span>
+          <span>PLANEJ</span>
           <span class="green">{{ previsto | number : "1.0-0" }}</span>
         </div>
         <div>
-          <span>REALIZADO</span>
+          <span>REALIZ</span>
 
           <span [ngClass]="{
-            green: realizado >= previsto,
-            red: realizado < previsto
-          }">{{ realizado | number : "1.0-0" }}</span>
+              green: realizado >= previsto,
+              red: realizado < previsto
+            }">{{ realizado | number : "1.0-0" }}</span>
         </div>
         <div>
-          <span>DIFERENÇA</span>
+          <span>DIFER</span>
           <span [ngClass]="{
               green: 0 <= realizado - previsto,
               red: 0 > realizado - previsto
@@ -115,20 +115,20 @@
       </div>
     </div>
     <div class="div9 complicated-div">
-      <h1>TEMPO MÉDIO DE CICLO</h1>
+      <h1>TEMPO M CICLO</h1>
       <div>
         <div>
-          <span>PLANEJADO</span>
+          <span>PLANEJ</span>
           <span class="green">{{ TCimpostado | number : "1.0-0" }}</span>
         </div>
         <div>
-          <span>REALIZADO</span>
-          <span [ngClass]="{
-              green: 3600 / (realizado / (effectiveTime / 60)) <= TCimpostado,
-              red: 3600 / (realizado / (effectiveTime / 60)) > TCimpostado
-            }">{{
-            3600 / (realizado / (effectiveTime / 60)) | number : "1.0-0"
-            }}</span>
+          <span>REALIZ</span>
+          <span *ngIf="isValueFinite(calcularValor())" [ngClass]="getClass()">
+            {{ calcularValor() | number: '1.0-0' }}
+          </span>
+          <span *ngIf="!isValueFinite(calcularValor())">
+            0
+          </span>
         </div>
       </div>
     </div>
@@ -136,7 +136,7 @@
       <h1>QUANTIDADE PRODUZIDA HORA A HORA</h1>
       <div>
         <div>
-          <span>8:00</span>
+          <span>8h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas7 >=
@@ -146,7 +146,7 @@
             }">{{ realizadoHora.horas7 }}</span>
         </div>
         <div>
-          <span>9:00</span>
+          <span>9h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas8 >=
@@ -156,7 +156,7 @@
             }">{{ realizadoHora.horas8 }}</span>
         </div>
         <div>
-          <span>10:00</span>
+          <span>10h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas9 >=
@@ -166,7 +166,7 @@
             }">{{ realizadoHora.horas9 }}</span>
         </div>
         <div>
-          <span>11:00</span>
+          <span>11h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas10 >=
@@ -177,7 +177,7 @@
             }">{{ realizadoHora.horas10 }}</span>
         </div>
         <div>
-          <span>12:00</span>
+          <span>12h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas11 >=
@@ -188,11 +188,11 @@
             }">{{ realizadoHora.horas11 }}</span>
         </div>
         <div>
-          <span>13:00</span>
+          <span>13h</span>
           <span class="green">{{ realizadoHora.horas12 }}</span>
         </div>
         <div>
-          <span>14:00</span>
+          <span>14h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas13 >=
@@ -203,7 +203,7 @@
             }">{{ realizadoHora.horas13 }}</span>
         </div>
         <div>
-          <span>15:00</span>
+          <span>15h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas14 >=
@@ -214,7 +214,7 @@
             }">{{ realizadoHora.horas14 }}</span>
         </div>
         <div>
-          <span>16:00</span>
+          <span>16h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas15 >=
@@ -225,7 +225,7 @@
             }">{{ realizadoHora.horas15 }}</span>
         </div>
         <div>
-          <span>17:00</span>
+          <span>17h</span>
           <span [ngClass]="{
               green:
                 realizadoHora.horas16 >=
@@ -251,10 +251,6 @@
       <div class="col2" *ngFor="let item of nodemcu">
         <div>
           <span class="op" [ngClass]="{
-              'unica-1':
-                item.nameId.name === '080' || item.nameId.name === '090',
-              'unica-2':
-                item.nameId.name === '100' || item.nameId.name === '110',
               piscar_azul: item.state === 'piscar_azul',
               piscar: item.state === 'piscar',
               help: item.state === 'help',
@@ -268,56 +264,20 @@
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? 180 >= item.contador.contadorAtual
-                  : TCimpostado >= item.contador.contadorAtual,
-              sublime_red:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? 180 < item.contador.contadorAtual
-                  : TCimpostado < item.contador.contadorAtual
+              sublime_green: TCimpostado >= item.contador.contadorAtual,
+              sublime_red: TCimpostado < item.contador.contadorAtual
             }">{{ item.contador.contadorAtual }}s</span>
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? 180 >= item.currentTC
-                  : TCimpostado >= item.currentTC,
-              sublime_red:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? 180 < item.currentTC
-                  : TCimpostado < item.currentTC
+              sublime_green: TCimpostado >= item.currentTC,
+              sublime_red: TCimpostado < item.currentTC
             }">{{ item.currentTC }}s</span>
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? 180 >= item.firtlastTC
-                  : TCimpostado >= item.firtlastTC,
-              sublime_red:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? 180 < item.firtlastTC
-                  : TCimpostado < item.firtlastTC
+              sublime_green: TCimpostado >= item.firtlastTC,
+              sublime_red: TCimpostado < item.firtlastTC
             }">{{ item.firtlastTC }}s</span>
         </div>
         <div>
@@ -325,39 +285,40 @@
         </div>
         <div>
           <section class="two-items">
-            <span class="items"><span>{{ item.analise }}</span><p class="linha"></p></span>
-            <span class="items"><span>{{ item.ajuda }}</span><p class="linha"></p></span>
-            <span class="items"><span>{{ item.time_excess }}</span><p class="linha"></p></span>
+            <span class="items"><span>{{ item.analise }}</span>
+              <p class="linha"></p>
+            </span>
+            <span class="items"><span>{{ item.ajuda }}</span>
+              <p class="linha"></p>
+            </span>
+            <span class="items"><span>{{ item.time_excess }}</span>
+              <p class="linha"></p>
+            </span>
           </section>
         </div>
         <div>
           <span>{{ item.maintenance }}</span>
         </div>
         <div>
-          <span  [ngClass]="{
-              green:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                  ? item.count >= (previsto / 2)
-                  : item.count >= previsto,
-                  red:
-                item.nameId.name === '110' ||
-                item.nameId.name === '100' ||
-                item.nameId.name === '080' ||
-                item.nameId.name === '090'
-                ? item.count < (previsto / 2)
-                : item.count < previsto,
+          <span [ngClass]="{
+              green: item.count >= previsto,
+                  red: item.count < previsto,
             }">{{ item.count }}</span>
         </div>
       </div>
     </section>
-    <div class="legends">
+    <!-- <div class="legends">
       <p>Analise</p>
       <p>Ausência</p>
       <p>Qtde Tempo Excedido</p>
-    </div>
+    </div> -->
   </main>
-  <button class="dashboard" color="primary" [routerLink]="['/painel']" mat-flat-button><mat-icon>open_in_new</mat-icon>Dashboard</button>
+  <!-- <button
+    class="dashboard"
+    color="primary"
+    [routerLink]="['/painel']"
+    mat-flat-button
+  >
+    <mat-icon>open_in_new</mat-icon>Dashboard
+  </button> -->
 </main>

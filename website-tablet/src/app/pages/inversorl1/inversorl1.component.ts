@@ -677,6 +677,7 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.getAllRealizado();
     }, 1000);
+    this.toggleContagem('count')
   }
 
   openSnackBar(message: string, action: string) {

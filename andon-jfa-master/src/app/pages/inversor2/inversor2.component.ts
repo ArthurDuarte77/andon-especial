@@ -107,6 +107,22 @@ export class Inversor2Component implements OnInit, OnDestroy {
       clearInterval(this.intervaloRealizado)
   }
 
+  calcularValor(): number {
+    if (this.realizado === 0) {
+      return 0;
+    }
+    return 3600 / (this.realizado / (this.effectiveTime / 60));
+  }
+
+  isValueFinite(value: number): boolean {
+    return isFinite(value);
+  }
+
+  getClass(): string {
+    const valor = this.calcularValor();
+    return valor <= this.TCimpostado ? 'green' : 'red';
+  }
+
   ngOnInit(): void {
     this.modeloService.getAll().subscribe(res => {
       res.forEach(item => {
