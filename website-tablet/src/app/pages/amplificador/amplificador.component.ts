@@ -804,6 +804,7 @@ export class AmplificadorComponent implements OnInit, OnDestroy, AfterViewInit {
     this.onAjuda = !this.onAjuda;
     if (this.onAjuda) {
       this.operationService.changeAjuda(this.operation.name);
+      this.websocketService.changeColor(this.operation.name, 'piscar_azul');
       clearInterval(this.intervalo);
       this.tempoOcioso = 0;
       this.intervaloCounter();

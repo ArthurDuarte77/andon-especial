@@ -11,7 +11,7 @@ export class WebsocketService {
   constructor(private http: HttpClient) {}
 
   changeColor(op: string, status: string) {
-    this.http.get(`${environment.secondApiUrl}changeColor/amplificador?op=${op}&status=${status}`)
+    this.http.get(`${environment.secondApiUrl}changeColor/amplificador?op=${op}&status=${status}`).subscribe()
   }
 
 }
