@@ -55,7 +55,7 @@
     <div class="div4 simple-div">
       <h1>PRODUTO</h1>
       <div>
-        <span>{{ modeloAtual.modelo }}</span>
+        <span *ngIf="modeloAtual?.modelo">{{ modeloAtual.modelo }}</span>
       </div>
     </div>
     <div class="div5 simple-div">

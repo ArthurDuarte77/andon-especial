@@ -483,7 +483,7 @@ export class Inversor1Component implements OnInit, OnDestroy {
     this.nodemcu.forEach((res) => {
       this.TCmedioRealizado += res.tcmedio;
       this.MediaHorarioRealizada += res.tcmedio;
-      if (res.nameId.name == '160') {
+      if (res.nameId.name == '060') {
         this.realizado = res.count;
       }
     });
@@ -586,9 +586,9 @@ export class Inversor1Component implements OnInit, OnDestroy {
         this.shiftTime = result.split(',')[1];
         if (this.shiftTime == 0) {
           if (this.diaDaSemanda.getDay() == 5) {
-            this.shiftTime = 6.66;
-          } else {
             this.shiftTime = 7.66;
+          } else {
+            this.shiftTime = 8.66;
           }
           this.mainService
             .put(this.imposto, this.TCimpostado, this.shiftTime, this.op)

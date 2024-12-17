@@ -19,6 +19,8 @@ export class CounterComponent implements OnInit {
         this.location.navigate([`/inversorl2/${params['name'].substring(1)}`]);
       }else if(param == "a"){
         this.location.navigate([`/amplificador/${params['name'].substring(1)}`]);
+      }else if(param == "c"){
+        this.location.navigate([`/amplificadorl2/${params['name'].substring(1)}`]);
       }else if(param == "t"){
         this.location.navigate([`/controle/${params['name'].substring(1)}`]);
       }
