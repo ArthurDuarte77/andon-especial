@@ -193,7 +193,7 @@ public class NodemcuServiceControle {
     private void saveGeralCiclo(NodemcuModelControle nodemcuUpdates, OperationModelControle operation, FontesModelControle fonteAtual) {
         GeralCiclosModelControle geralCiclo = new GeralCiclosModelControle();
         int countAdd = 0;
-        if(fonteAtual.getModelo().equals("k600") || fonteAtual.getModelo().equals("k1200")){
+        if(fonteAtual.getModelo().equals("k600") || fonteAtual.getModelo().equals("k1200") && operation.getName().equals("020")){
             countAdd = 9;
         }else{
             countAdd = 0;
@@ -309,7 +309,7 @@ public class NodemcuServiceControle {
             return;
         }
         int countAdd = 1;
-        if(fonteAtual.getModelo().equals("k600") || fonteAtual.getModelo().equals("k1200")){
+        if((fonteAtual.getModelo().equals("k600") || fonteAtual.getModelo().equals("k1200")) && name.equals("020")){
             countAdd = 10;
         }else{
             countAdd = 1;
