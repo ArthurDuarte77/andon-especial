@@ -491,6 +491,7 @@ export class Inversorl1Component implements OnInit, OnDestroy, AfterViewInit {
           parseInt((this.limitedTimeOcioso + 60).toFixed(0))
         ) {
           this.operationService.changeTimeExcess(this.operation.name);
+          this.websocketService.changeColor(this.operation.name, "piscar")
         }
 
         this.tempoOcioso++;
