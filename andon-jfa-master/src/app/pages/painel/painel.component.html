@@ -1,18 +1,43 @@
+<a mat-fab extended [routerLink]="['/']" color="primary" class="return">
+  <mat-icon>keyboard_return</mat-icon>
+  Voltar
+</a>
+
 <section>
-    <h1>Controle Geral</h1>
-    
-    <main>
-        <div [routerLink]="['/relatorio']">
-            <h3>Relatorio Atual</h3>
-        </div>
-        <div [routerLink]="['/relatorio-historico']">
-            <h3>Relatorio Histórico</h3>
-        </div>
-        <div [routerLink]="['/configuracao']">
-            <h3>Configuração</h3>
-        </div>
-        <div [routerLink]="['/video']">
-            <h3>Historico Video</h3>
-        </div>
-    </main>
+  <h1>Controle Geral</h1>
+
+  <main *ngIf="!isReady">
+    <div (click)="isReady = true; painel = 'inversor-parede'">
+      <h3>INVERSOR PAREDE</h3>
+    </div>
+    <div (click)="isReady = true; painel = 'inversor-bancada'">
+      <h3>INVERSOR BANCADA</h3>
+    </div>
+    <div (click)="isReady = true; painel = 'controle'">
+      <h3>CONTROLE</h3>
+    </div>
+    <div (click)="isReady = true; painel = 'amplificador-l1'">
+      <h3>AMPLIFICADOR L1</h3>
+    </div>
+    <div (click)="isReady = true; painel = 'amplificador-l2'">
+      <h3>AMPLIFICADOR L2</h3>
+    </div>
+  </main>
+  <main *ngIf="isReady">
+    <div [routerLink]="['/relatorio']">
+      <h3>Relatorio Atual</h3>
+    </div>
+    <div [routerLink]="['/relatorio-historico']">
+      <h3>Relatorio Histórico</h3>
+    </div>
+    <div [routerLink]="['/configuracao']">
+      <h3>Configuração</h3>
+    </div>
+    <div [routerLink]="['/video']">
+      <h3>Historico Video</h3>
+    </div>
+    <div [routerLink]="['/ciclo']">
+      <h3>Ciclo</h3>
+  </div>
+  </main>
 </section>

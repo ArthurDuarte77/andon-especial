@@ -18,7 +18,7 @@ import com.api.nodemcu.repository.controle.OperationRepositoryControle;
 
 
 @RestController
-@RequestMapping("/api/v1/geral/ciclo")
+@RequestMapping("/api/v1/geral/ciclo_controle")
 public class GeralCiclosControllerControle {
 
     @Autowired

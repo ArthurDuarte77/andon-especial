@@ -44,7 +44,7 @@ export class ControleComponent implements OnInit, OnDestroy {
   counting: number[] = []
   TCimpostado: number = 0;
   previsto: number = 0;
-  shiftTime: number = 8.66;
+  shiftTime: number = 7.66;
   minutos8: number = 0;
   minutos9: number = 0;
   minutos10: number = 0;
@@ -562,7 +562,9 @@ export class ControleComponent implements OnInit, OnDestroy {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogMetaComponent, { width: '30%', height: '70%' });
+    const dialogRef = this.dialog.open(DialogMetaComponent, { width: '30%', height: '70%',       data: {
+      type: 'controle',
+    }, });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -578,7 +580,7 @@ export class ControleComponent implements OnInit, OnDestroy {
           if (this.diaDaSemanda.getDay() == 5) {
             this.shiftTime = 7.66
           } else {
-            this.shiftTime = 8.66;
+            this.shiftTime = 7.66;
           }
           this.mainService
             .put(this.imposto, this.TCimpostado, this.shiftTime, this.op)

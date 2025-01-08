@@ -7,6 +7,7 @@ import { ConfiguracaoComponent } from './pages/configuracao/configuracao.compone
 import { RelatorioHistoricoComponent } from './pages/relatorio-historico/relatorio-historico.component';
 import { VideoRelatorioComponent } from './pages/video-relatorio/video-relatorio.component';
 import { Inversor1Component } from './pages/inversor1/inversor1.component';
+import { GeralCicloComponent } from './pages/geral-ciclo/geral-ciclo.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'relatorio-historico', component: RelatorioHistoricoComponent},
   {path: 'configuracao', component: ConfiguracaoComponent},
   {path: 'painel', component: PainelComponent},
+  {path: 'ciclo', component: GeralCicloComponent},
   {path: 'video', component: VideoRelatorioComponent},
   {path: '**', redirectTo: ""}
 ];

@@ -20,6 +20,10 @@ import { NodemcuInversor1Service } from 'src/app/service/inversor1/nodemcu.servi
 import { MainInversor1Service } from 'src/app/service/inversor1/main.service';
 import { ModeloInversor1Service } from 'src/app/service/inversor1/modelo.service';
 import { RelatorioInversor1Service } from 'src/app/service/inversor1/relatorio.service';
+import { NodemcuControleService } from 'src/app/service/controle/nodemcu.service';
+import { MainControleService } from 'src/app/service/controle/main.service';
+import { ModeloControleService } from 'src/app/service/controle/modelo.service';
+import { RelatorioControleService } from 'src/app/service/controle/relatorio.service';
 
 
 
@@ -52,7 +56,7 @@ export class ConfiguracaoComponent implements OnInit {
 
   dialog = inject(MatDialog);
 
-  constructor(private cdr: ChangeDetectorRef, private nodemcuService: NodemcuInversor1Service, private mainService: MainInversor1Service, private modeloService: ModeloInversor1Service, private _snackBar: MatSnackBar, private relatorioService: RelatorioInversor1Service) { }
+  constructor(private cdr: ChangeDetectorRef, private nodemcuService: NodemcuControleService, private mainService: MainControleService, private modeloService: ModeloControleService, private _snackBar: MatSnackBar, private relatorioService: RelatorioControleService) { }
 
   nodemcu: Nodemcu[] = []
   filteredData: Nodemcu[] = []

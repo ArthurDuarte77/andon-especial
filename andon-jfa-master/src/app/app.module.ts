@@ -42,6 +42,7 @@ import { AmplificadorComponent } from './pages/amplificador/amplificador.compone
 import { ControleComponent } from './pages/controle/controle.component';
 import { Inversor2Component } from './pages/inversor2/inversor2.component';
 import { Amplificador2Component } from './pages/amplificador2/amplificador2.component';
+import { GeralCicloComponent } from './pages/geral-ciclo/geral-ciclo.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { Amplificador2Component } from './pages/amplificador2/amplificador2.comp
     AmplificadorComponent,
     ControleComponent,
     Inversor2Component,
-    Amplificador2Component
+    Amplificador2Component,
+    GeralCicloComponent
   ],
   imports: [
     MatTooltipModule,

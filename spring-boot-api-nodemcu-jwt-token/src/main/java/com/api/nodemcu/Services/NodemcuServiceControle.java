@@ -398,6 +398,7 @@ public class NodemcuServiceControle {
                 String formattedDate = dateFormat.format(currentDate);
                 List<ControleGeralModelControle> controleGeral = controleGeralRepository.findByDataBetween(formattedDate,
                         formattedDate);
+                System.out.println(controleGeral);
                 controleGeral.get(0).setRealizado(nodemcuResultadoGeral.getCount());
                 controleGeral.get(0).setModelo(fonteAtual.getModelo());
                 controleGeralRepository.save(controleGeral.get(0));

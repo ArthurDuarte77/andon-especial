@@ -94,6 +94,18 @@
               red: 0 > realizado - previsto
             }">{{ realizado - previsto | number : "1.0-0" }}</span>
         </div>
+        <div>
+          <span>EFICI</span>
+          <span
+            [ngClass]="{
+              green: 0 <= realizado - previsto,
+              red: 0 > realizado - previsto
+            }"
+            >{{
+              (realizado / previsto) * 100 | number : "1.0-2"
+            }}%</span
+          >
+        </div>
       </div>
     </div>
     <div class="div8 complicated-div">

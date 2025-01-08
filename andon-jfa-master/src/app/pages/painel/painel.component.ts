@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class PainelComponent {
 
+  painel: string = ""
+
+  isReady: boolean = false;
+
 }
