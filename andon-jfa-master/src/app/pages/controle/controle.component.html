@@ -1,5 +1,9 @@
+
 <mat-spinner *ngIf="init == false"></mat-spinner>
 <main class="container">
+  <div class="pausa" *ngIf="isPausa">
+    PAUSA
+  </div>
   <main class="parent" *ngIf="init">
     <div class="div1" (click)="openDialog()">
       <!-- <img src="assets\download-removebg-preview.png" alt="logo"> -->

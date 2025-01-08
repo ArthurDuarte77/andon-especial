@@ -1,10 +1,24 @@
+.pausa{
+  position: absolute;
+  width: 70%;
+  text-align: center;
+  height: 40%;
+  z-index: 9999;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
 mat-spinner {
     position: absolute;
     top: 45%;
     left: 45%;
   }
-  
-  
+
+
   $title_font_header: 0.8rem;
   $value_font_header: 0.9rem;
   $table_row: 0.8rem;
@@ -15,8 +29,9 @@ mat-spinner {
   $blue: #01CCFC;
   $background-gray: #0c4068;
   $normal_weight: 500;
-  
+
   .container{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +43,7 @@ mat-spinner {
       right: 8px;
     }
   }
-  
+
   .parent {
     max-height: 100%;
     max-width: 100%;
@@ -41,7 +56,7 @@ mat-spinner {
     grid-column-gap: 1%;
     box-sizing: border-box;
   }
-  
+
   .div1 {
     cursor: pointer;
     color: $color-font;
@@ -59,7 +74,7 @@ mat-spinner {
     color: $color-font;
     grid-area: 1 / 1 / 2 / 2;
   }
-  
+
   .simple-div{
     background-color: $background-gray;
     border-radius: 5px;
@@ -115,7 +130,7 @@ mat-spinner {
       }
     }
   }
-  
+
   .div3 {
     color: $color-font;
     grid-area: 1 / 2 / 2 / 3;
@@ -136,7 +151,7 @@ mat-spinner {
     color: $color-font;
     grid-area: 2 / 1 / 3 / 4;
   }
-  
+
   .complicated-div{
     background-color: $background-gray;
     border-radius: 10px;
@@ -200,7 +215,7 @@ mat-spinner {
     color: $color-font;
     grid-area: 2 / 4 / 3 / 6;
   }
-  
+
   .div10 {
     grid-area: 2 / 6 / 3 / 13;
     background-color: $background-gray;
@@ -256,7 +271,7 @@ mat-spinner {
       }
     }
   }
-  
+
   section {
     // //padding: 10px;
     grid-area: 3 / 1 / 4 / 13;
@@ -269,7 +284,7 @@ mat-spinner {
     max-width: 100%;
     max-height: 100%;
   }
-  
+
   .col1,
   .col2 {
     display: flex;
@@ -281,7 +296,7 @@ mat-spinner {
     border-radius: 10px;
     flex: 1 1;
   }
-  
+
   .col1 {
     max-width: 14%;
     min-width: 14vw;
@@ -292,7 +307,7 @@ mat-spinner {
     color: white;
     font-weight: $normal_weight;
   }
-  
+
   .col1 div {
     position: relative;
     flex: 1 1;
@@ -306,7 +321,7 @@ mat-spinner {
       font-weight: $normal_weight;
     }
   }
-  
+
   .col2 div {
     font-weight: $normal_weight;
     color: black;
@@ -362,11 +377,11 @@ mat-spinner {
       }
     }
   }
-  
+
   .sublime_red, .sublime_green{
     position: relative;
   }
-  
+
   .sublime_red::after {
     content: "";
     position: absolute;
@@ -375,7 +390,7 @@ mat-spinner {
     bottom: 0;
     border-bottom: 0.3vw solid $red;
   }
-  
+
   .sublime_green::after {
     content: "";
     position: absolute;
@@ -384,7 +399,7 @@ mat-spinner {
     bottom: 0;
     border-bottom: 0.3vw solid $green;
   }
-  
+
   .col2 div:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -393,7 +408,7 @@ mat-spinner {
     bottom: 0;
     border-bottom: 1px solid #718ba3;
   }
-  
+
   .col1 div:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -402,7 +417,7 @@ mat-spinner {
     bottom: 0;
     border-bottom: 1px solid #718ba3;
   }
-  
+
   .col2 div:nth-child(1) span,
   .col2 div:nth-child(8) span {
     border-radius: 5px;
@@ -410,19 +425,19 @@ mat-spinner {
     color: black;
     font-weight: $normal_weight;
   }
-  
+
   .red {
     background-color: $red;
   }
-  
+
   .piscar_azul {
     animation: piscarAzul 1s ease-in-out infinite;
   }
-  
+
   .piscar {
     animation: piscarVermelho 1s ease-in-out infinite;
   }
-  
+
   @keyframes piscarAzul {
     0% {
       background-color: $green;
@@ -445,14 +460,14 @@ mat-spinner {
       background-color: $green;
     }
   }
-  
+
   .blue {
     background-color: $blue;
   }
   .green {
     background-color: $green;
   }
-  
+
   div .two-items {
     position: absolute;
     display: grid;
@@ -546,14 +561,14 @@ mat-spinner {
   .col2:nth-child(9), .col2:nth-child(10) {
     background-color: rgba(245, 238, 143, 0.993)
     //rgba(245, 238, 143, 0.993)
-  
+
   }
   .col2:nth-child(11), .col2:nth-child(12) {
     background-color: rgba(184, 184, 184, 0.884)
     //rgb(238, 197, 168)
-  
+
   }
-  
+
   .legends {
     grid-area: 4 / 1 / 5 / 12;
     display: flex;
@@ -569,7 +584,7 @@ mat-spinner {
       display: flex;
       align-items: center;
       margin-right: 10px;
-  
+
       &::before {
         content: '';
         display: inline-block;
@@ -579,11 +594,11 @@ mat-spinner {
         background-color: currentColor; // Usa a cor do texto como cor de fundo do quadrado
       }
     }
-  
+
     p:nth-child(1)::before {
       background-color: $blue; // Cor para "Analise"
     }
-  
+
     p:nth-child(2)::before {
       // background-color: $red; // Cor para "Ajuda"
       background: linear-gradient(to right, $blue 50%, white 50%);
@@ -592,7 +607,6 @@ mat-spinner {
       background-color: $red; // Cor para "Ajuda"
     }
   }
-  
-  
-  
-  
+
+
+

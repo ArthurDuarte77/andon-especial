@@ -43,6 +43,7 @@ export class ControleComponent implements OnInit, OnDestroy {
   op: string = "";
   counting: number[] = []
   TCimpostado: number = 0;
+  isPausa: boolean = false;
   previsto: number = 0;
   shiftTime: number = 7.66;
   minutos8: number = 0;
@@ -197,16 +198,9 @@ export class ControleComponent implements OnInit, OnDestroy {
     })
     this.nodemcu.forEach(item => {
       if (item.nameId.pausa == true) {
-        if (!this.dialog.openDialogs.length) {
-          this.dialogRef = this.dialog.open(DialogPauseComponent, {
-            width: '900px',
-            height: '400px'
-          });
-        }
+        this.isPausa = true
       } else {
-        if (this.dialog.openDialogs.length) {
-          this.dialogRef.close()
-        }
+        this.isPausa = false
       }
     });
   }
@@ -531,13 +525,13 @@ export class ControleComponent implements OnInit, OnDestroy {
     const hours = now.getHours();
     const minutes = now.getMinutes();
     if(new Date().getDay() != 5){
-      if (hours === 9 && minutes === 30) {
+      if (hours === 9 && minutes === 0) {
         this.nodemcuService.pausa(true).subscribe()
-      } else if (hours === 9 && minutes === 40) {
+      } else if (hours === 9 && minutes === 10) {
         this.nodemcuService.pausa(false).subscribe()
-      } else if (hours === 12 && minutes === 0) {
+      } else if (hours === 11 && minutes === 30) {
         this.nodemcuService.pausa(true).subscribe()
-      } else if (hours === 13 && minutes === 0) {
+      } else if (hours === 12 && minutes === 30) {
         this.nodemcuService.pausa(false).subscribe()
       } else if (hours === 15 && minutes === 5) {
         this.nodemcuService.pausa(true).subscribe()
@@ -549,9 +543,9 @@ export class ControleComponent implements OnInit, OnDestroy {
         this.nodemcuService.pausa(true).subscribe()
       } else if (hours === 9 && minutes === 40) {
         this.nodemcuService.pausa(false).subscribe()
-      } else if (hours === 12 && minutes === 0) {
+      } else if (hours === 11 && minutes === 30) {
         this.nodemcuService.pausa(true).subscribe()
-      } else if (hours === 13 && minutes === 0) {
+      } else if (hours === 12 && minutes === 30) {
         this.nodemcuService.pausa(false).subscribe()
       } else if (hours === 14 && minutes === 25) {
         this.nodemcuService.pausa(true).subscribe()
@@ -578,7 +572,7 @@ export class ControleComponent implements OnInit, OnDestroy {
         this.shiftTime = result.split(',')[1];
         if (this.shiftTime == 0) {
           if (this.diaDaSemanda.getDay() == 5) {
-            this.shiftTime = 7.66
+            this.shiftTime = 6.66
           } else {
             this.shiftTime = 7.66;
           }

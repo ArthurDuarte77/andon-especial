@@ -49,7 +49,7 @@ export class Amplificador2Component implements OnInit, OnDestroy {
   counting: number[] = [];
   TCimpostado: number = 0;
   previsto: number = 0;
-  shiftTime: number = 8.66;
+  shiftTime: number = 7.66;
   minutos8: number = 0;
   minutos9: number = 0;
   minutos10: number = 0;
@@ -103,6 +103,7 @@ export class Amplificador2Component implements OnInit, OnDestroy {
       analise: false,
     },
   };
+  isPausa: boolean = false;
   horasAtuais: any;
   impostodivididoporshift: any = 0;
   dialogRef: any;
@@ -205,16 +206,9 @@ export class Amplificador2Component implements OnInit, OnDestroy {
     });
     this.nodemcu.forEach((item) => {
       if (item.nameId.pausa == true) {
-        if (!this.dialog.openDialogs.length) {
-          this.dialogRef = this.dialog.open(DialogPauseComponent, {
-            width: '900px',
-            height: '400px',
-          });
-        }
+        this.isPausa = true;
       } else {
-        if (this.dialog.openDialogs.length) {
-          this.dialogRef.close();
-        }
+        this.isPausa = false;
       }
     });
   }
@@ -539,9 +533,9 @@ export class Amplificador2Component implements OnInit, OnDestroy {
         this.nodemcuService.pausa(true).subscribe();
       } else if (hours === 9 && minutes === 40) {
         this.nodemcuService.pausa(false).subscribe();
-      } else if (hours === 12 && minutes === 0) {
+      } else if (hours === 11 && minutes === 30) {
         this.nodemcuService.pausa(true).subscribe();
-      } else if (hours === 13 && minutes === 0) {
+      } else if (hours === 12 && minutes === 30) {
         this.nodemcuService.pausa(false).subscribe();
       } else if (hours === 15 && minutes === 5) {
         this.nodemcuService.pausa(true).subscribe();
@@ -553,9 +547,9 @@ export class Amplificador2Component implements OnInit, OnDestroy {
         this.nodemcuService.pausa(true).subscribe();
       } else if (hours === 9 && minutes === 40) {
         this.nodemcuService.pausa(false).subscribe();
-      } else if (hours === 12 && minutes === 0) {
+      } else if (hours === 11 && minutes === 30) {
         this.nodemcuService.pausa(true).subscribe();
-      } else if (hours === 13 && minutes === 0) {
+      } else if (hours === 12 && minutes === 30) {
         this.nodemcuService.pausa(false).subscribe();
       } else if (hours === 14 && minutes === 25) {
         this.nodemcuService.pausa(true).subscribe();
@@ -586,9 +580,9 @@ export class Amplificador2Component implements OnInit, OnDestroy {
         this.shiftTime = result.split(',')[1];
         if (this.shiftTime == 0) {
           if (this.diaDaSemanda.getDay() == 5) {
-            this.shiftTime = 7.66;
+            this.shiftTime = 6.66;
           } else {
-            this.shiftTime = 8.66;
+            this.shiftTime = 7.66;
           }
           this.mainService
             .put(this.imposto, this.TCimpostado, this.shiftTime, this.op)
