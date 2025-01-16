@@ -272,7 +272,7 @@
               help: item.state === 'help',
               green: item.state === 'verde',
               blue: item.state === 'azul',
-              red: item.state !== 'verde' && item.state !== 'azul'
+              red: item.state === 'vermelho'
             }">
             <p>OPE</p>
             {{ item.nameId.name }}
@@ -280,21 +280,21 @@
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green: TCimpostado >= item.contador.contadorAtual,
-              sublime_red: TCimpostado < item.contador.contadorAtual
+              sublime_green: TCimpostado * 10 >= item.contador.contadorAtual,
+              sublime_red: TCimpostado * 10 < item.contador.contadorAtual
             }">{{ item.contador.contadorAtual }}s</span>
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green: TCimpostado >= item.currentTC,
-              sublime_red: TCimpostado < item.currentTC
-            }">{{ item.currentTC }}s</span>
+              sublime_green: TCimpostado * 10 >= item.firtlastTC,
+              sublime_red: TCimpostado * 10 < item.firtlastTC
+            }">{{ item.firtlastTC }}s</span>
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green: TCimpostado >= item.firtlastTC,
-              sublime_red: TCimpostado < item.firtlastTC
-            }">{{ item.firtlastTC }}s</span>
+              sublime_green: TCimpostado * 10 >= item.secondtlastTC,
+              sublime_red: TCimpostado * 10 < item.secondtlastTC
+            }">{{ item.secondtlastTC }}s</span>
         </div>
         <div>
           <span>{{ item.qtdetcexcedido }}</span>

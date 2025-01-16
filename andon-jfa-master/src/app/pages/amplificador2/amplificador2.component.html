@@ -285,15 +285,15 @@
         </div>
         <div>
           <span [ngClass]="{
-              sublime_green: TCimpostado >= item.currentTC,
-              sublime_red: TCimpostado < item.currentTC
-            }">{{ item.currentTC }}s</span>
-        </div>
-        <div>
-          <span [ngClass]="{
               sublime_green: TCimpostado >= item.firtlastTC,
               sublime_red: TCimpostado < item.firtlastTC
             }">{{ item.firtlastTC }}s</span>
+        </div>
+        <div>
+          <span [ngClass]="{
+              sublime_green: TCimpostado >= item.secondtlastTC,
+              sublime_red: TCimpostado < item.secondtlastTC
+            }">{{ item.secondtlastTC }}s</span>
         </div>
         <div>
           <span>{{ item.qtdetcexcedido }}</span>

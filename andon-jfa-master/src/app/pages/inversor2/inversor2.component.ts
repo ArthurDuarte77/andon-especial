@@ -132,7 +132,7 @@ export class Inversor2Component implements OnInit, OnDestroy {
         }
       })
       if (this.modeloAtual == undefined) {
-        this.modeloService.changeIsCurrent('storm 120A', true)
+        this.modeloService.changeIsCurrent('inversor 3000w', true)
       }
     })
     window.onload = () => {
@@ -159,7 +159,7 @@ export class Inversor2Component implements OnInit, OnDestroy {
     this.intervaloImposto = setInterval(() => {
       this.impostoIntervalo()
       this.retirarPausa();
-    }, 1000);
+    }, 3000);
     this.intervaloRealizado = setInterval(() => {
       this.realizadoIntevalo()
     }, 5000);

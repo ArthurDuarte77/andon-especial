@@ -155,11 +155,11 @@ export class ControleComponent implements OnInit, OnDestroy, AfterViewInit {
     this.operationService.getTCimposto().subscribe(
       (res: Main[]) => {
         res.forEach((res) => {
-          this.lmitedTime = res.tcimposto;
-          this.limitedTimeOcioso = res.tcimposto;
+          console.log(res.tcimposto)
+          this.lmitedTime = res.tcimposto * 10;
+          this.limitedTimeOcioso = res.tcimposto * 10;
           this.imposto = res.imposto;
           this.shiftTime = res.shiftTime;
-          this.ajustarTempoEnvelhecimento();
         });
         // this.loadVideoFromLocalStorage();
       },
@@ -171,11 +171,10 @@ export class ControleComponent implements OnInit, OnDestroy, AfterViewInit {
       this.operationService.getTCimposto().subscribe(
         (res: Main[]) => {
           res.forEach((res) => {
-            this.lmitedTime = res.tcimposto;
-            this.limitedTimeOcioso = res.tcimposto;
+            this.lmitedTime = res.tcimposto * 10;
+            this.limitedTimeOcioso = res.tcimposto * 10;
             this.imposto = res.imposto;
             this.shiftTime = res.shiftTime;
-            this.ajustarTempoEnvelhecimento();
           });
         },
         (error) => {
@@ -537,7 +536,7 @@ export class ControleComponent implements OnInit, OnDestroy, AfterViewInit {
     this.vermelhoStateCalled = false;
     this.tempoOcioso = 0;
     if (this.contadorRodando) {
-      if (this.contador >= 15) {
+      if (this.contador >= 5) {
         this.tempoOcioso = 0;
         this.intervaloCounter();
         this.stopTimer(state);
@@ -594,16 +593,14 @@ export class ControleComponent implements OnInit, OnDestroy, AfterViewInit {
       this.contador++;
       if (this.contador === parseInt((this.lmitedTime + 60).toFixed(0))) {
         this.operationService.changeTimeExcess(this.operation.name);
+        this.websocketService.changeColor(this.operation.name, 'piscar');
       }
       if (this.contador > 9999) {
         this.stopTimer(state);
       } else if (this.contador == this.lmitedTime) {
         this.websocketService.changeColor(this.operation.name, 'vermelho');
-        this.vermelhoStateCalled = false;
-      } else if (this.contador == this.lmitedTime * 2) {
-        this.websocketService.changeColor(this.operation.name, 'vermelho');
         this.vermelhoStateCalled = true;
-      } else if (this.contador == 1) {
+      }else if (this.contador == 1) {
         this.websocketService.changeColor(this.operation.name, 'verde');
       }
     }, 1000);
@@ -789,17 +786,6 @@ export class ControleComponent implements OnInit, OnDestroy, AfterViewInit {
     const dialogRef = this.dialog.open(DialogHelpComponent, {
       data: data,
     });
-  }
-
-  ajustarTempoEnvelhecimento() {
-    if (
-      this.operation.name == '100' ||
-      this.operation.name == '110' ||
-      this.operation.name == '080' ||
-      this.operation.name == '090'
-    ) {
-      this.lmitedTime = 180;
-    }
   }
 
   ajuda() {

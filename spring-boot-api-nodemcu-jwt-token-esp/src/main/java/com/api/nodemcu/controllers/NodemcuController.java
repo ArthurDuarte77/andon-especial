@@ -102,9 +102,24 @@ public class NodemcuController {
     public void changeColorControle2(@RequestParam String op, @RequestParam String status) {
         OperationModelAmplificador2 operation = operationRepositoryAmplificador2.findByName(op);
         try {
-            nodemcuRepositoryAmplificador2.updateStateByNameId(status, operation.getId());
+            nodemcuRepositoryControle.updateStateByNameId(status, operation.getId());
             messagingTemplate.convertAndSend(
                     "/controle/" + operation.getName() + "/news",
+                    status);
+        } catch (InvalidDataAccessApiUsageException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/changeColor/gerenciaveis")
+    @ResponseBody
+    @Transactional
+    public void changeColorGerenciaveis(@RequestParam String op, @RequestParam String status) {
+        OperationModelAmplificador2 operation = operationRepositoryAmplificador2.findByName(op);
+        try {
+            nodemcuRepositoryAmplificador2.updateStateByNameId(status, operation.getId());
+            messagingTemplate.convertAndSend(
+                    "/gerenciaveis/" + operation.getName() + "/news",
                     status);
         } catch (InvalidDataAccessApiUsageException e) {
             throw new RuntimeException(e);
