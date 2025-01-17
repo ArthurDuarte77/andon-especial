@@ -9,6 +9,8 @@ import { MainAmplificador2Service } from 'src/app/service/amplificador2/main.ser
 import { ModeloAmplificador2Service } from 'src/app/service/amplificador2/modelo.service';
 import { MainControleService } from 'src/app/service/controle/main.service';
 import { ModeloControleService } from 'src/app/service/controle/modelo.service';
+import { MainGerenciaveisService } from 'src/app/service/gerenciaveis/main.service';
+import { ModeloGerenciaveisService } from 'src/app/service/gerenciaveis/modelo.service';
 import { MainInversor1Service } from 'src/app/service/inversor1/main.service';
 import { ModeloInversor1Service } from 'src/app/service/inversor1/modelo.service';
 import { MainInversor2Service } from 'src/app/service/inversor2/main.service';
@@ -24,11 +26,13 @@ export class DialogMetaComponent implements OnInit {
     private modeloServiceAmplificador2: ModeloAmplificador2Service,
     private modeloServiceAmplificador: ModeloAmplificador1Service,
     private modeloServiceControle: ModeloControleService,
+    private modeloServiceGerenciaveis: ModeloGerenciaveisService,
     private modeloServiceInversor1: ModeloInversor1Service,
     private modeloServiceInversor2: ModeloInversor2Service,
     private mainAmplificador1Service: MainAmplificador1Service,
     private mainAmplificador2Service: MainAmplificador2Service,
     private mainControleService: MainControleService,
+    private mainGerenciaveisService: MainGerenciaveisService,
     private mainInversor1Service: MainInversor1Service,
     private mainInversor2Service: MainInversor2Service
   ) {}
@@ -54,6 +58,11 @@ export class DialogMetaComponent implements OnInit {
       });
     } else if (this.data.type == 'controle') {
       this.modeloServiceControle.getAll().subscribe((res) => {
+        this.modelos = res;
+        this.selectedModel = this.modelos.find(item => item.is_current == true)?.modelo;
+      });
+    } else if (this.data.type == 'gerenciaveis') {
+      this.modeloServiceGerenciaveis.getAll().subscribe((res) => {
         this.modelos = res;
         this.selectedModel = this.modelos.find(item => item.is_current == true)?.modelo;
       });
@@ -84,6 +93,12 @@ export class DialogMetaComponent implements OnInit {
       });
     } else if (this.data.type == 'controle') {
       this.mainControleService.getAllMain().subscribe((res) => {
+        this.main = res[0];
+        this.input.setValue(this.main.imposto)
+        this.op.setValue(parseInt(this.main.op))
+      });
+    } else if (this.data.type == 'gerenciaveis') {
+      this.mainGerenciaveisService.getAllMain().subscribe((res) => {
         this.main = res[0];
         this.input.setValue(this.main.imposto)
         this.op.setValue(parseInt(this.main.op))

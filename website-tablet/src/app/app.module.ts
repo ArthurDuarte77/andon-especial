@@ -26,6 +26,7 @@ import { AmplificadorComponent } from './pages/amplificador/amplificador.compone
 import { ControleComponent } from './pages/controle/controle.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { Amplificadorl2Component } from './pages/amplificadorl2/amplificadorl2.component';
+import { GerenciaveisComponent } from './pages/gerenciaveis/gerenciaveis.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { Amplificadorl2Component } from './pages/amplificadorl2/amplificadorl2.c
     AmplificadorComponent,
     ControleComponent,
     Amplificadorl2Component,
+    GerenciaveisComponent,
 
   ],
 

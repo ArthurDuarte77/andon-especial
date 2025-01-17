@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.api.nodemcu.model.Inversor2.OperationModelInversor2;
 import com.api.nodemcu.model.amplificador.OperationModelAmplificador;
 import com.api.nodemcu.model.amplificador2.OperationModelAmplificador2;
+import com.api.nodemcu.model.controle.OperationModelControle;
+import com.api.nodemcu.model.gerenciaveis.OperationModelGerenciaveis;
 import com.api.nodemcu.model.inversor1.OperationModelInversor1;
 import com.api.nodemcu.repository.Inversor1.NodemcuRepositoryInversor1;
 import com.api.nodemcu.repository.Inversor1.OperationRepositoryInversor1;
@@ -22,6 +24,8 @@ import com.api.nodemcu.repository.amplificador2.NodemcuRepositoryAmplificador2;
 import com.api.nodemcu.repository.amplificador2.OperationRepositoryAmplificador2;
 import com.api.nodemcu.repository.controle.NodemcuRepositoryControle;
 import com.api.nodemcu.repository.controle.OperationRepositoryControle;
+import com.api.nodemcu.repository.gerenciaveis.NodemcuRepositoryGerenciaveis;
+import com.api.nodemcu.repository.gerenciaveis.OperationRepositoryGerenciaveis;
 
 import jakarta.transaction.Transactional;
 
@@ -45,6 +49,12 @@ public class NodemcuController {
 
     @Autowired
     private NodemcuRepositoryControle nodemcuRepositoryControle;
+    @Autowired
+
+    private OperationRepositoryGerenciaveis operationRepositoryGerenciaveis;
+
+    @Autowired
+    private NodemcuRepositoryGerenciaveis nodemcuRepositoryGerenciaveis;
 
     @Autowired
     private OperationRepositoryInversor1 operationRepositoryInversor1;
@@ -100,7 +110,7 @@ public class NodemcuController {
     @ResponseBody
     @Transactional
     public void changeColorControle2(@RequestParam String op, @RequestParam String status) {
-        OperationModelAmplificador2 operation = operationRepositoryAmplificador2.findByName(op);
+        OperationModelControle operation = operationRepositoryControle.findByName(op);
         try {
             nodemcuRepositoryControle.updateStateByNameId(status, operation.getId());
             messagingTemplate.convertAndSend(
@@ -115,9 +125,9 @@ public class NodemcuController {
     @ResponseBody
     @Transactional
     public void changeColorGerenciaveis(@RequestParam String op, @RequestParam String status) {
-        OperationModelAmplificador2 operation = operationRepositoryAmplificador2.findByName(op);
+        OperationModelGerenciaveis operation = operationRepositoryGerenciaveis.findByName(op);
         try {
-            nodemcuRepositoryAmplificador2.updateStateByNameId(status, operation.getId());
+            nodemcuRepositoryGerenciaveis.updateStateByNameId(status, operation.getId());
             messagingTemplate.convertAndSend(
                     "/gerenciaveis/" + operation.getName() + "/news",
                     status);
@@ -155,4 +165,5 @@ public class NodemcuController {
             throw new RuntimeException(e);
         }
     }
+
 }
