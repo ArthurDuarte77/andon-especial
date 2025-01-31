@@ -529,31 +529,31 @@ export class Inversor1Component implements OnInit, OnDestroy {
     const hours = now.getHours();
     const minutes = now.getMinutes();
     if (new Date().getDay() != 5) {
-      if (hours === 9 && minutes === 30) {
+      if (hours === 9 && minutes === 0) {
         this.nodemcuService.pausa(true).subscribe();
-      } else if (hours === 9 && minutes === 40) {
+      } else if (hours === 9 && minutes === 10) {
         this.nodemcuService.pausa(false).subscribe();
       } else if (hours === 11 && minutes === 30) {
         this.nodemcuService.pausa(true).subscribe();
       } else if (hours === 12 && minutes === 30) {
         this.nodemcuService.pausa(false).subscribe();
-      } else if (hours === 15 && minutes === 5) {
+      } else if (hours === 14 && minutes === 50) {
         this.nodemcuService.pausa(true).subscribe();
-      } else if (hours === 15 && minutes === 15) {
+      } else if (hours === 15 && minutes === 0) {
         this.nodemcuService.pausa(false).subscribe();
       }
     } else {
-      if (hours === 9 && minutes === 30) {
+      if (hours === 9 && minutes === 0) {
         this.nodemcuService.pausa(true).subscribe();
-      } else if (hours === 9 && minutes === 40) {
+      } else if (hours === 9 && minutes === 10) {
         this.nodemcuService.pausa(false).subscribe();
       } else if (hours === 11 && minutes === 30) {
         this.nodemcuService.pausa(true).subscribe();
       } else if (hours === 12 && minutes === 30) {
         this.nodemcuService.pausa(false).subscribe();
-      } else if (hours === 14 && minutes === 25) {
+      } else if (hours === 14 && minutes === 10) {
         this.nodemcuService.pausa(true).subscribe();
-      } else if (hours === 14 && minutes === 35) {
+      } else if (hours === 14 && minutes === 20) {
         this.nodemcuService.pausa(false).subscribe();
       }
     }
